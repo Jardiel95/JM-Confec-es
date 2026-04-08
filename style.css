@@ -1,0 +1,32 @@
+html { 
+    scroll-behavior: smooth; 
+}
+
+body { 
+    background-color: #fdfbf7; 
+    color: #292524; 
+    font-family: 'Inter', sans-serif; 
+}
+
+.serif-italic { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-style: italic; 
+}
+
+.cart-open { 
+    overflow: hidden; 
+}
+
+#cart-sidebar { 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.category-btn.active { 
+    background-color: #a67c52;
+    color: #fdfbf7;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
+}
+
+a:hover, button:hover {
+    color: #a67c52;
+}
