@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JM Confecções</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            'cream': '#fdfbf7',        
+                            'cream-medium': '#f2eee3', 
+                            'clay': '#a67c52',         
+                            'olive': '#5a5a40',        
+                            'linen': '#f5f5f0',        
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-50 bg-brand-cream/80 backdrop-blur-md border-b border-brand-olive/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-brand-olive rounded-full flex items-center justify-center text-brand-cream">
+                        <i data-lucide="scissors" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-2xl font-serif font-semibold tracking-tight text-brand-olive">JM Confecções</span>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest text-stone-600">
+                    <a href="#servicos" class="hover:text-brand-olive transition-colors">Serviços</a>
+                    <a href="#sobre" class="hover:text-brand-olive transition-colors">Sobre</a>
+                    <a href="#contato" class="hover:text-brand-olive transition-colors">Contato</a>
+                </div>
+
+                <button onclick="toggleCart(true)" class="relative p-2 text-brand-olive hover:bg-brand-olive/5 rounded-full transition-colors">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    <span id="cart-count" class="hidden absolute top-0 right-0 bg-brand-clay text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-cream">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <section class="relative py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="inline-block px-4 py-1 bg-brand-olive/10 text-brand-olive rounded-full text-xs font-semibold uppercase tracking-widest mb-6">Costura Afetiva & Sustentável</span>
+                        <h1 class="text-6xl md:text-7xl font-serif leading-[0.9] mb-8 text-stone-900">
+                            Dê vida nova às suas <span class="serif-italic text-brand-clay">peças favoritas</span>.
+                        </h1>
+                        <p class="text-lg text-stone-600 mb-10 max-w-lg leading-relaxed">
+                            Ajustes precisos, consertos delicados e transformações que respeitam a história de cada tecido. Reserve seu horário agora.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#servicos" class="bg-brand-olive text-brand-cream px-8 py-4 rounded-full font-medium hover:bg-stone-800 transition-all shadow-lg shadow-brand-olive/20 flex items-center gap-2">
+                                Ver Tabela de Preços <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+                            <img src="https://www.maquinasuniao.com.br/wp-content/uploads/2019/12/hist%C3%B3ria-da-costura.jpg" alt="Costureira trabalhando" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-stone-100">
+                            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center">
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-stone-400">Qualidade</p>
+                                <p class="font-serif text-lg text-stone-800">Cliente 100% satisfeito.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-brand-linen -z-10 rounded-l-[10rem]"></div>
+        </section>
+
+        <section id="servicos" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif mb-4 text-stone-900">Nossos Serviços</h2>
+                    <p class="text-stone-500 max-w-2xl mx-auto">Selecione os serviços que você precisa. Os valores são estimativas baseadas em tecidos comuns.</p>
+                </div>
+
+                <div id="category-tabs" class="flex flex-wrap justify-center gap-2 mb-12"></div>
+
+                <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+        </section>
+
+        <section id="sobre" class="py-24 bg-brand-linen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-brand-olive mb-6 shadow-sm">
+                            <i data-lucide="clock" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-xl font-serif mb-2">Prazo de Entrega</h4>
+                        <p class="text-stone-500 text-sm">Entregamos no mesmo dia.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-brand-olive mb-6 shadow-sm">
+                            <i data-lucide="map-pin" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-xl font-serif mb-2">Onde Estamos</h4>
+                        <p class="text-stone-500 text-sm">Rua José Martins, 3785 - Granja Lisboa, Fortaleza - CE</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-brand-olive mb-6 shadow-sm">
+                            <i data-lucide="phone" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-xl font-serif mb-2">Contato Direto</h4>
+                        <p class="text-stone-500 text-sm">(85) 92158-8281<br>Segunda a Sexta: 09h às 17h</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato" class="bg-stone-900 text-stone-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 border-b border-stone-800 pb-12 mb-12">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-olive rounded-full flex items-center justify-center text-brand-cream">
+                        <i data-lucide="scissors" class="w-4 h-4"></i>
+                    </div>
+                    <span class="text-xl font-serif font-semibold text-white">JM Confecções</span>
+                </div>
+                <div class="flex gap-8 text-sm uppercase tracking-widest">
+                    <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-white transition-colors">Pinterest</a>
+                </div>
+            </div>
+            <p class="text-center text-xs tracking-widest uppercase">© 2026 JM Confecções. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="cart-overlay" onclick="toggleCart(false)" class="hidden fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-[60]"></div>
+    
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-full max-w-md bg-white z-[70] shadow-2xl flex flex-col translate-x-full">
+        <div class="p-6 border-b border-stone-100 flex justify-between items-center">
+            <h2 class="text-2xl font-serif">Seu Pedido</h2>
+            <button onclick="toggleCart(false)" class="p-2 hover:bg-stone-100 rounded-full transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6"></div>
+
+        <div id="cart-footer" class="hidden p-6 bg-brand-linen border-t border-stone-200 space-y-4">
+            <div class="flex justify-between items-center text-lg font-serif">
+                <span>Total Estimado</span>
+                <span id="cart-total" class="text-2xl font-bold text-stone-900">R$ 0,00</span>
+            </div>
+            <p class="text-xs text-stone-500 leading-tight">* O valor final pode variar dependendo do tipo de tecido e complexidade após avaliação presencial.</p>
+            <button onclick="sendToWhatsApp()" class="w-full bg-emerald-600 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20">
+                <i data-lucide="message-circle" class="w-5 h-5"></i> Enviar para WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
